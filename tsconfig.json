@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["@honkhonk/vite-plugin-svgr/client", "chrome"]
+    // "types": ["@honkhonk/vite-plugin-svgr/client", "chrome"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

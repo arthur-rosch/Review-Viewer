@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -22,7 +22,7 @@ export const GlobalStyles = createGlobalStyle`
 
   html {
     min-height: 30rem;
-    max-height: 30rem;
+    max-height: 32rem;
   }
 
   body {
@@ -31,6 +31,7 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     transition: all 0.50s linear;
     color:${(props) => props.theme.white};
+    background: ${(props) => props.theme.background};
   }
 
   body, html, #root {
@@ -56,5 +57,16 @@ export const GlobalStyles = createGlobalStyle`
   
   ul{
     list-style:none;
+  }
+`
+export const PagesWrapper = styled.div`
+  width: 25rem;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  > main {
+    width: 100%;
+    height: 100%;
   }
 `
