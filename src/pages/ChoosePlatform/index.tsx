@@ -73,7 +73,7 @@ export function ChoosePlatform() {
 
       <ContainerButton>
         <BackButton to={'/'}>Voltar</BackButton>
-        <NextButton to={'/'}>
+        <NextButton to={'/ListComments'}>
           <button disabled={isButtonNextDisabled}>
             <strong>Proximo</strong>
           </button>
