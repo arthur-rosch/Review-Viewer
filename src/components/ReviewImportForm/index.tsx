@@ -1,6 +1,10 @@
 import { z } from 'zod'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { Checkbox, Slider } from '@mui/material'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { extractIdsFromUrl } from '../../utils/extractIdsFromUrl'
 import {
   Form,
   Input,
@@ -11,9 +15,6 @@ import {
   InputGenderDivision,
   InputReviewQuantity,
 } from './styles'
-import { useState } from 'react'
-import { Checkbox, Slider } from '@mui/material'
-import { extractIdsFromUrl } from '../../utils/extractIdsFromUrl'
 
 const ReviewImportFormSchema = z.object({
   storeLink: z.string(),
@@ -25,8 +26,9 @@ const ReviewImportFormSchema = z.object({
 export type ReviewImportValues = z.infer<typeof ReviewImportFormSchema>
 
 export function ReviewImportForm() {
-  const [reviewQuantity, setReviewQuantity] = useState(0)
-  const [genderDivision, setGenderDivision] = useState(0)
+  const navigate = useNavigate()
+  const [genderDivision, setGenderDivision] = useState(50)
+  const [reviewQuantity, setReviewQuantity] = useState(50)
 
   const { reset, register, handleSubmit } = useForm<ReviewImportValues>({
     resolver: zodResolver(ReviewImportFormSchema),
@@ -40,10 +42,16 @@ export function ReviewImportForm() {
       numMen: genderDivision,
       numWomen: 100 - genderDivision,
     }
+    extractIdsFromUrl(dataForm.storeLink)
+    const validationResult = ReviewImportFormSchema.safeParse(dataForm)
     console.log(dataForm)
-    reset()
 
-    const props = extractIdsFromUrl(data.storeLink)
+    if (validationResult.success) {
+      navigate('/ChoosePlatform')
+    } else {
+      console.log('Erro de validação:', validationResult.error)
+    }
+    reset()
   }
 
   return (
@@ -55,7 +63,7 @@ export function ReviewImportForm() {
 
       <InputStoreLink>
         Link da shoppe
-        <Input type="text" {...register('storeLink')} />
+        <Input type="text" {...register('storeLink')} required />
       </InputStoreLink>
 
       <InputCheckBox>
@@ -92,17 +100,20 @@ export function ReviewImportForm() {
 
       <InputSalesPage>
         Pagina de vendas
-        <Input type="text" {...register('salesPage')} />
+        <Input type="text" {...register('salesPage')} required />
       </InputSalesPage>
 
       <InputReviewQuantity>
         Qtd.Reviews
         <div>
           <Slider
-            defaultValue={30}
+            defaultValue={50}
             value={reviewQuantity}
             aria-label="Temperature"
-            onChange={(e) => setReviewQuantity(Number(e.target?.value))}
+            onChange={(e) => {
+              const target = e.target as HTMLInputElement
+              setReviewQuantity(Number(target.value))
+            }}
             sx={{
               color: '#ffffff',
             }}
@@ -117,7 +128,10 @@ export function ReviewImportForm() {
           defaultValue={30}
           value={genderDivision}
           aria-label="Temperature"
-          onChange={(e) => setGenderDivision(Number(e.target?.value))}
+          onChange={(e) => {
+            const target = e.target as HTMLInputElement
+            setGenderDivision(Number(target.value))
+          }}
           sx={{
             color: '#ffffff',
           }}
@@ -136,7 +150,9 @@ export function ReviewImportForm() {
         </div>
       </InputGenderDivision>
 
-      <SubmitButton>Importar</SubmitButton>
+      <SubmitButton>
+        <strong>Importar</strong>
+      </SubmitButton>
     </Form>
   )
 }
