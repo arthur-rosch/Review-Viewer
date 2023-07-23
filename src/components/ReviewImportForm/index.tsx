@@ -12,6 +12,8 @@ import {
   InputReviewQuantity,
 } from './styles'
 import { useState } from 'react'
+import { Checkbox, Slider } from '@mui/material'
+import { extractIdsFromUrl } from '../../utils/extractIdsFromUrl'
 
 const ReviewImportFormSchema = z.object({
   storeLink: z.string(),
@@ -40,6 +42,8 @@ export function ReviewImportForm() {
     }
     console.log(dataForm)
     reset()
+
+    const props = extractIdsFromUrl(data.storeLink)
   }
 
   return (
@@ -56,12 +60,32 @@ export function ReviewImportForm() {
 
       <InputCheckBox>
         <label>
-          <input type="checkbox" {...register('hasImagesOnly')} />
+          <Checkbox
+            size="small"
+            defaultChecked
+            {...register('hasImagesOnly')}
+            sx={{
+              color: '#ffffff',
+              '&.Mui-checked': {
+                color: '#ffffff',
+              },
+            }}
+          />
           Somente com Imagens
         </label>
 
         <label>
-          <input type="checkbox" {...register('oneImagePerReview')} />
+          <Checkbox
+            size="small"
+            defaultChecked
+            {...register('oneImagePerReview')}
+            sx={{
+              color: '#ffffff',
+              '&.Mui-checked': {
+                color: '#ffffff',
+              },
+            }}
+          />
           Uma Imagem por Review
         </label>
       </InputCheckBox>
@@ -74,12 +98,14 @@ export function ReviewImportForm() {
       <InputReviewQuantity>
         Qtd.Reviews
         <div>
-          <input
-            min="0"
-            max="100"
-            type="range"
+          <Slider
+            defaultValue={30}
             value={reviewQuantity}
-            onChange={(e) => setReviewQuantity(Number(e.target.value))}
+            aria-label="Temperature"
+            onChange={(e) => setReviewQuantity(Number(e.target?.value))}
+            sx={{
+              color: '#ffffff',
+            }}
           />
           <p>{reviewQuantity}</p>
         </div>
@@ -87,12 +113,14 @@ export function ReviewImportForm() {
 
       <InputGenderDivision>
         Distribuição de gêneros
-        <input
-          min="0"
-          max="100"
-          type="range"
+        <Slider
+          defaultValue={30}
           value={genderDivision}
-          onChange={(e) => setGenderDivision(Number(e.target.value))}
+          aria-label="Temperature"
+          onChange={(e) => setGenderDivision(Number(e.target?.value))}
+          sx={{
+            color: '#ffffff',
+          }}
         />
         <div>
           <span>

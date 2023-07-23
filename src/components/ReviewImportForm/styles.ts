@@ -30,6 +30,13 @@ export const ContainerInputBase = styled.label`
 
   border-radius: 8px;
   border: 2px solid #8c9494;
+
+  background: rgb(36, 39, 44);
+  background: linear-gradient(
+    58deg,
+    rgba(36, 39, 44, 0.804359243697479) 60%,
+    rgba(207, 208, 209, 0.0984768907563025) 100%
+  );
 `
 export const InputStoreLink = styled(ContainerInputBase)``
 export const InputSalesPage = styled(ContainerInputBase)``
@@ -91,6 +98,13 @@ export const InputReviewQuantity = styled.label`
       font-size: 1rem;
       border-radius: 8px;
       border: 2px solid #8c9494;
+
+      background: rgb(36, 39, 44);
+      background: linear-gradient(
+        58deg,
+        rgba(36, 39, 44, 0.804359243697479) 60%,
+        rgba(207, 208, 209, 0.0984768907563025) 100%
+      );
     }
   }
 `

@@ -21,8 +21,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   html {
-    min-height: 30rem;
-    max-height: 32rem;
+    min-height: 35rem;
+    max-height: 35rem;
   }
 
   body {
@@ -60,7 +60,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 `
 export const PagesWrapper = styled.div`
-  width: 25rem;
+  width: 28rem;
   height: 100%;
   overflow: hidden;
   position: relative;

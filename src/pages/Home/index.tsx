@@ -9,11 +9,19 @@ export function Home() {
       <Header>
         <div>
           <button>
-            <ArrowLeft size={32} weight="light" color="#8c9494" />
+            <ArrowLeft size={32} weight="light" color="#616368" />
           </button>
           <p>Olá, ARTHUR ROSCH</p>
         </div>
-        <Switch defaultChecked />
+        <Switch
+          defaultChecked
+          sx={{
+            color: '#ffffff',
+            '&.Mui-checked': {
+              color: '#ffffff',
+            },
+          }}
+        />
       </Header>
 
       <ReviewImportForm />
