@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.main`
@@ -41,7 +42,7 @@ export const Star = styled.div`
   justify-content: start;
 `
 
-export const MediaStar = styled.p`
+export const AverageOfStars = styled.p`
   margin-left: 1rem;
   padding: 0.2rem 0.7rem 0.2rem 0.7rem;
 
@@ -62,7 +63,7 @@ export const MediaStar = styled.p`
   );
 `
 
-export const ContainerButtons = styled.div`
+export const ContainerCSVDownloadAndDeleteButton = styled.div`
   margin-top: 1rem;
 
   display: flex;
@@ -80,5 +81,24 @@ export const ContainerButtons = styled.div`
 
     color: #616365;
     background: rgba(207, 208, 209, 0.0984768907563025);
+
+    cursor: not-allowed;
   }
+`
+
+export const ListComment = styled.div`
+  width: 100%;
+  height: 25rem;
+
+  overflow: auto;
+  margin-top: 1rem;
+`
+export const ContainerNavigationButton = styled.div`
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+
+  display: flex;
+  align-items: end;
+  justify-content: end;
 `

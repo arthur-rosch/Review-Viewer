@@ -1,5 +1,5 @@
 import { RoutesComponent } from './routes'
-import { BrowserRouter } from 'react-router-dom'
+import { MemoryRouter as Router } from "react-router-dom";
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyles, PagesWrapper } from './styles/global'
@@ -7,16 +7,17 @@ import { ReviewViewerContextProvider } from './context/ReviewViewer'
 
 function App() {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
+    <Router>
+       <ThemeProvider theme={defaultTheme}>
         <GlobalStyles />
         <PagesWrapper>
           <ReviewViewerContextProvider>
             <RoutesComponent />
           </ReviewViewerContextProvider>
         </PagesWrapper>
-      </BrowserRouter>
     </ThemeProvider>
+    </Router>
+   
   )
 }
 

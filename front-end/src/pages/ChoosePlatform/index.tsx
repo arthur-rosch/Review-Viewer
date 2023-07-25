@@ -1,12 +1,8 @@
 import { useState } from 'react'
-import { ButtonPlatform } from '../../components/ButtonPlatform'
-import {
-  BackButton,
-  Container,
-  ContainerButton,
-  ContainerPlatform,
-  NextButton,
-} from './styles'
+import { Platform } from '../../components/Platform'
+import { BackButton } from '../../components/BackButton'
+import { NextButton } from '../../components/NextButton'
+import { Container, ContainerButton, ContainerPlatform } from './styles'
 
 export function ChoosePlatform() {
   const [selectedPlatform, setSelectedPlatform] = useState('')
@@ -59,7 +55,7 @@ export function ChoosePlatform() {
       <ContainerPlatform>
         {dataPlatform.map((platform) => {
           return (
-            <ButtonPlatform
+            <Platform
               id={platform.id}
               key={platform.id}
               img={platform.img}
@@ -72,12 +68,12 @@ export function ChoosePlatform() {
       </ContainerPlatform>
 
       <ContainerButton>
-        <BackButton to={'/'}>Voltar</BackButton>
-        <NextButton to={'/ListComments'}>
-          <button disabled={isButtonNextDisabled}>
-            <strong>Proximo</strong>
-          </button>
-        </NextButton>
+        <BackButton url={'/'} />
+        <NextButton
+          text={'Proximo'}
+          url={'/ListComments'}
+          isDisabled={isButtonNextDisabled}
+        />
       </ContainerButton>
     </Container>
   )

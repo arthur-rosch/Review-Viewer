@@ -1,6 +1,6 @@
 import { Container } from './styles'
 
-interface ButtonPlatformProps {
+interface PlatformProps {
   id: string
   img: string
   text: string
@@ -8,13 +8,13 @@ interface ButtonPlatformProps {
   selectedPlatform: (platformValue: string) => void
 }
 
-export function ButtonPlatform({
+export function Platform({
   img,
   value,
   id,
   text,
   selectedPlatform,
-}: ButtonPlatformProps) {
+}: PlatformProps) {
   return (
     <Container>
       <label htmlFor={id}>

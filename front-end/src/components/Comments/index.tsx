@@ -1,50 +1,43 @@
-import { Container, Comment, ContainerPhotos, Slider } from './styles'
+import { Stars } from '../Stars'
 import { XCircle } from 'phosphor-react'
+import { Ratings } from '../../models/Ratings'
+import { Container, Comment, ContainerPhotos, Slider } from './styles'
 
-export function Comments() {
+interface CommentsProps extends Ratings {
+  index: number
+  handleRemoveComment: (index: number) => void
+}
+
+export function Comments({
+  index,
+  images,
+  comment,
+  rating_star,
+  author_username,
+  handleRemoveComment,
+}: CommentsProps) {
   return (
     <Container>
-      <button>
+      <button onClick={() => handleRemoveComment(index)}>
         <XCircle size={32} weight="fill" color="#fff" />
       </button>
       <Comment>
-        <h2>Leia Domingues</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum cumque
-          iusto numquam
-        </p>
+        <h2>{author_username}</h2>
+        <p>{comment}</p>
+        <Stars number={rating_star} />
       </Comment>
       <ContainerPhotos>
         <Slider>
-          <img
-            src="https://down-lum-br.img.susercontent.com/br-11134103-22100-6vlbd8zcgwiv77.webp"
-            alt=""
-          />
-          <img
-            src="https://down-lum-br.img.susercontent.com/br-11134103-22100-6vlbd8zcgwiv77.webp"
-            alt=""
-          />
-          <img
-            src="https://down-lum-br.img.susercontent.com/br-11134103-22100-6vlbd8zcgwiv77.webp"
-            alt=""
-          />
-          <img
-            src="https://down-lum-br.img.susercontent.com/br-11134103-22100-6vlbd8zcgwiv77.webp"
-            alt=""
-          />
-          <img
-            src="https://down-lum-br.img.susercontent.com/br-11134103-22100-6vlbd8zcgwiv77.webp"
-            alt=""
-          />
-
-          <img
-            src="https://down-lum-br.img.susercontent.com/br-11134103-22100-6vlbd8zcgwiv77.webp"
-            alt=""
-          />
-          <img
-            src="https://down-lum-br.img.susercontent.com/br-11134103-22100-6vlbd8zcgwiv77.webp"
-            alt=""
-          />
+          {images.map((img) => {
+            return (
+              <>
+                <img
+                  alt=""
+                  src={`https://down-lum-br.img.susercontent.com/${img}.webp`}
+                />
+              </>
+            )
+          })}
         </Slider>
       </ContainerPhotos>
     </Container>

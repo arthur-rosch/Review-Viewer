@@ -1,38 +1,28 @@
 import axios from 'axios'
-import { useContext, useEffect, useState } from 'react'
-import {
-  Container,
-  ContainerButtons,
-  ContainerStar,
-  Header,
-  MediaStar,
-  Star,
-} from './styles'
-import { ReviewViewerContext } from '../../context/ReviewViewer'
-import { Comments } from '../../components/Comments'
 import { Stars } from '../../components/Stars'
-
-interface RatingsVideos {
-  url?: string
-  cover?: string
-  duration?: number
-}
-
-interface Ratings {
-  comment: string
-  images: string[]
-  rating_star: number
-  videos?: RatingsVideos
-  author_username: string
-}
+import { Ratings } from '../../models/Ratings'
+import { Comments } from '../../components/Comments'
+import { ReviewViewerContext } from '../../context/ReviewViewer'
+import { useContext, useEffect, useState, useCallback } from 'react'
+import { calculateRatingsAverage } from '../../utils/calculateRatingsAverage'
+import {
+  Star,
+  Header,
+  Container,
+  ListComment,
+  ContainerStar,
+  AverageOfStars,
+  ContainerNavigationButton,
+  ContainerCSVDownloadAndDeleteButton,
+} from './styles'
+import { BackButton } from '../../components/BackButton'
+import { NextButton } from '../../components/NextButton'
 
 export function ListComments() {
   const [ratings, setRatings] = useState<Ratings[]>([])
   const { itemId, shopeId } = useContext(ReviewViewerContext)
 
-  const urlGetImage = 'https://down-lum-br.img.susercontent.com/'
-
-  useEffect(() => {
+  const getRatingsByShoppe = useCallback(() => {
     axios
       .get(`http://localhost:3001/api/get_ratings/${shopeId}/${itemId}`)
       .then((response) => {
@@ -40,7 +30,21 @@ export function ListComments() {
 
         setRatings(dataRatings)
       })
-  }, [itemId, shopeId, ratings])
+  }, [itemId, shopeId])
+
+  function handleRemoveComment(index: number) {
+    if (index >= 0 && index < ratings.length) {
+      const newRatings = [...ratings]
+
+      newRatings.splice(index, 1)
+
+      setRatings(newRatings)
+    }
+  }
+
+  useEffect(() => {
+    getRatingsByShoppe()
+  }, [getRatingsByShoppe])
 
   return (
     <Container>
@@ -48,20 +52,40 @@ export function ListComments() {
         <ContainerStar>
           <p>Média de estrelas</p>
           <Star>
-            <Stars number={1} />
-            <MediaStar>4,6</MediaStar>
+            <Stars number={calculateRatingsAverage(ratings)} />
+            <AverageOfStars>{calculateRatingsAverage(ratings)}</AverageOfStars>
           </Star>
         </ContainerStar>
-        <ContainerButtons>
+        <ContainerCSVDownloadAndDeleteButton>
           <button>
             <strong>Baixar csv</strong>
           </button>
           <button>
             <strong>Apagar imagens</strong>
           </button>
-        </ContainerButtons>
+        </ContainerCSVDownloadAndDeleteButton>
       </Header>
-      <Comments />
+      <ListComment>
+        {ratings.map((item, index) => {
+          return (
+            <>
+              <Comments
+                key={index}
+                index={index}
+                images={item.images}
+                comment={item.comment}
+                rating_star={item.rating_star}
+                author_username={item.author_username}
+                handleRemoveComment={handleRemoveComment}
+              />
+            </>
+          )
+        })}
+      </ListComment>
+      <ContainerNavigationButton>
+        <BackButton url="/ChoosePlatform" />
+        <NextButton text={'Enviar'} isDisabled={false} url={'/ListComments'} />
+      </ContainerNavigationButton>
     </Container>
   )
 }

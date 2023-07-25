@@ -31,7 +31,7 @@ export const Container = styled.div`
 
     /* CHECKED STYLES */
     [type='radio']:checked + img {
-      outline: 3px solid #616368;
+      outline: 3px solid #fff;
     }
 
     p {

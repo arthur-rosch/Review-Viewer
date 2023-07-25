@@ -1,9 +1,9 @@
 import { Switch } from '@mui/material'
 import { ArrowLeft } from 'phosphor-react'
 import { Header, Container } from './styles'
-import { ReviewImportForm } from '../../components/ReviewImportForm'
+import { ReviewImportForm } from '../../components/Form'
 
-export function Home() {
+export function Form() {
   return (
     <Container>
       <Header>

@@ -1,14 +1,15 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100%;
+  width: 95%;
   padding: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 
   display: flex;
   align-items: start;
   justify-content: center;
 
+  position: relative;
   border-radius: 8px;
 
   background: #292b30;
@@ -16,8 +17,9 @@ export const Container = styled.div`
   button {
     padding: 0 0.5rem 0 0.5rem;
 
-    top: 4rem;
-    right: 0rem;
+    top: -1rem;
+    right: 1rem;
+    left: 24.5rem;
     position: absolute;
 
     border: 0;
@@ -35,6 +37,7 @@ export const Comment = styled.div`
   }
   p {
     font-size: 10px;
+    margin-bottom: 1rem;
   }
 `
 
