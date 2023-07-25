@@ -60,7 +60,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 `
 export const PagesWrapper = styled.div`
-  width: 28rem;
+  width: 30rem;
   height: 100%;
   overflow: hidden;
   position: relative;

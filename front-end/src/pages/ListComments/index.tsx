@@ -10,6 +10,7 @@ import {
 } from './styles'
 import { ReviewViewerContext } from '../../context/ReviewViewer'
 import { Star } from 'phosphor-react'
+import { Comments } from '../../components/Comments'
 
 interface RatingsVideos {
   url?: string
@@ -64,6 +65,7 @@ export function ListComments() {
           </button>
         </ContainerButtons>
       </Header>
+      <Comments />
     </Container>
   )
 }
