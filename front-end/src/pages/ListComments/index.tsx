@@ -1,7 +1,9 @@
-import axios from 'axios'
+import { api } from '../../service/api'
 import { Stars } from '../../components/Stars'
 import { Ratings } from '../../models/Ratings'
 import { Comments } from '../../components/Comments'
+import { NextButton } from '../../components/NextButton'
+import { BackButton } from '../../components/BackButton'
 import { ReviewViewerContext } from '../../context/ReviewViewer'
 import { useContext, useEffect, useState, useCallback } from 'react'
 import { calculateRatingsAverage } from '../../utils/calculateRatingsAverage'
@@ -15,21 +17,17 @@ import {
   ContainerNavigationButton,
   ContainerCSVDownloadAndDeleteButton,
 } from './styles'
-import { BackButton } from '../../components/BackButton'
-import { NextButton } from '../../components/NextButton'
 
 export function ListComments() {
   const [ratings, setRatings] = useState<Ratings[]>([])
   const { itemId, shopeId } = useContext(ReviewViewerContext)
 
   const getRatingsByShoppe = useCallback(() => {
-    axios
-      .get(`http://localhost:3001/api/get_ratings/${shopeId}/${itemId}`)
-      .then((response) => {
-        const dataRatings = response.data.data.ratings
+    api.get(`/get_ratings/${shopeId}/${itemId}`).then((response) => {
+      const dataRatings = response.data.data.ratings
 
-        setRatings(dataRatings)
-      })
+      setRatings(dataRatings)
+    })
   }, [itemId, shopeId])
 
   function handleRemoveComment(index: number) {
