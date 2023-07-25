@@ -1,10 +1,11 @@
 import { z } from 'zod'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { Checkbox, Slider } from '@mui/material'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { extractIdsFromUrl } from '../../utils/extractIdsFromUrl'
+import { ReviewViewerContext } from '../../context/ReviewViewer'
 import {
   Form,
   Input,
@@ -30,6 +31,8 @@ export function ReviewImportForm() {
   const [genderDivision, setGenderDivision] = useState(50)
   const [reviewQuantity, setReviewQuantity] = useState(50)
 
+  const { handleSetItemId, handleSetShopeId } = useContext(ReviewViewerContext)
+
   const { reset, register, handleSubmit } = useForm<ReviewImportValues>({
     resolver: zodResolver(ReviewImportFormSchema),
   })
@@ -42,11 +45,14 @@ export function ReviewImportForm() {
       numMen: genderDivision,
       numWomen: 100 - genderDivision,
     }
-    extractIdsFromUrl(dataForm.storeLink)
     const validationResult = ReviewImportFormSchema.safeParse(dataForm)
-    console.log(dataForm)
 
     if (validationResult.success) {
+      const props = extractIdsFromUrl(dataForm.storeLink)
+
+      handleSetItemId(props?.itemId || '')
+      handleSetShopeId(props?.shopId || '')
+
       navigate('/ChoosePlatform')
     } else {
       console.log('Erro de validação:', validationResult.error)

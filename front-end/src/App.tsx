@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyles, PagesWrapper } from './styles/global'
+import { ReviewViewerContextProvider } from './context/ReviewViewer'
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
       <BrowserRouter>
         <GlobalStyles />
         <PagesWrapper>
-          <RoutesComponent />
+          <ReviewViewerContextProvider>
+            <RoutesComponent />
+          </ReviewViewerContextProvider>
         </PagesWrapper>
       </BrowserRouter>
     </ThemeProvider>
