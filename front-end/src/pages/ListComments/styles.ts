@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.main`
@@ -10,14 +9,7 @@ export const Container = styled.main`
   flex-direction: column;
 
   border-radius: 6px;
-  border: 2px solid #616368;
-
-  background: rgb(36, 39, 44);
-  background: linear-gradient(
-    58deg,
-    rgba(36, 39, 44, 0.804359243697479) 60%,
-    rgba(207, 208, 209, 0.0984768907563025) 100%
-  );
+  border: 2px solid ${(props) => props.theme.borderColor};
 `
 export const Header = styled.header`
   width: 100%;

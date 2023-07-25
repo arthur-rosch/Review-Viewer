@@ -11,11 +11,11 @@ export const GlobalStyles = createGlobalStyle`
       height: 3px;
     }
     ::-webkit-scrollbar-thumb {
-      background: ${(props) => props.theme.background};
+      background: ${(props) => props.theme.borderColor};
       border-radius: 0.8rem;
     }
     ::-webkit-scrollbar-track{
-      background: ${(props) => props.theme.currentLine};
+      background: ${(props) => props.theme.background};
       border-radius: 0.8rem;
     }
   }
@@ -31,7 +31,7 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     transition: all 0.50s linear;
     color:${(props) => props.theme.white};
-    background: ${(props) => props.theme.background};
+    background: #000;
   }
 
   body, html, #root {
@@ -68,5 +68,12 @@ export const PagesWrapper = styled.div`
   > main {
     width: 100%;
     height: 100%;
+
+    background: rgb(36, 39, 44);
+    background: linear-gradient(
+      58deg,
+      rgba(36, 39, 44, 0.804359243697479) 60%,
+      rgba(207, 208, 209, 0.0984768907563025) 100%
+    );
   }
 `

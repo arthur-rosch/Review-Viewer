@@ -9,7 +9,9 @@ interface NextButtonProps {
 export function NextButton({ isDisabled, text, url }: NextButtonProps) {
   return (
     <Button to={url}>
-      <button disabled={isDisabled}>{text}</button>
+      <button disabled={isDisabled}>
+        <strong>{text}</strong>
+      </button>
     </Button>
   )
 }

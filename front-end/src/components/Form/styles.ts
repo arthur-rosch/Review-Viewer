@@ -29,9 +29,9 @@ export const ContainerInputBase = styled.label`
   justify-content: center;
 
   border-radius: 8px;
-  border: 2px solid #8c9494;
+  border: 2px solid ${(props) => props.theme.borderColor};
 
-  background: rgb(36, 39, 44);
+  background: ${(props) => props.theme.background};
   background: linear-gradient(
     58deg,
     rgba(36, 39, 44, 0.804359243697479) 60%,
@@ -99,7 +99,7 @@ export const InputReviewQuantity = styled.label`
       border-radius: 8px;
       border: 2px solid #8c9494;
 
-      background: rgb(36, 39, 44);
+      background: ${(props) => props.theme.background};
       background: linear-gradient(
         58deg,
         rgba(36, 39, 44, 0.804359243697479) 60%,

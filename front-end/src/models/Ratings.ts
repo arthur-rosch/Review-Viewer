@@ -4,6 +4,6 @@ export interface Ratings {
   comment: string
   images: string[]
   rating_star: number
-  videos?: RatingsVideos
+  videos?: RatingsVideos[]
   author_username: string
 }

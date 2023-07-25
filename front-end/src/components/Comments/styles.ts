@@ -72,10 +72,18 @@ export const Slider = styled.div`
   width: 8rem;
   height: 6rem;
   display: inline-block;
-  margin-right: 1rem; /* Espaço entre as fotos */
+  margin-right: 1rem;
   vertical-align: top;
 
   img {
+    width: 100%;
+    height: 5rem;
+    margin-right: 1rem;
+
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  video {
     width: 100%;
     height: 5rem;
     margin-right: 1rem;

@@ -33,6 +33,7 @@ export function Comments({
               <>
                 <img
                   alt=""
+                  key={img}
                   src={`https://down-lum-br.img.susercontent.com/${img}.webp`}
                 />
               </>

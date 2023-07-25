@@ -33,7 +33,12 @@ export function ReviewImportForm() {
 
   const { handleSetItemId, handleSetShopeId } = useContext(ReviewViewerContext)
 
-  const { reset, register, handleSubmit } = useForm<ReviewImportValues>({
+  const {
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ReviewImportValues>({
     resolver: zodResolver(ReviewImportFormSchema),
   })
 
@@ -70,6 +75,9 @@ export function ReviewImportForm() {
       <InputStoreLink>
         Link da shoppe
         <Input type="text" {...register('storeLink')} required />
+        {errors.storeLink && (
+          <span style={{ color: 'red' }}>{errors.storeLink.message}</span>
+        )}
       </InputStoreLink>
 
       <InputCheckBox>
