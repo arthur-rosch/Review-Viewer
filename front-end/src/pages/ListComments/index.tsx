@@ -6,11 +6,11 @@ import {
   ContainerStar,
   Header,
   MediaStar,
-  Stars,
+  Star,
 } from './styles'
 import { ReviewViewerContext } from '../../context/ReviewViewer'
-import { Star } from 'phosphor-react'
 import { Comments } from '../../components/Comments'
+import { Stars } from '../../components/Stars'
 
 interface RatingsVideos {
   url?: string
@@ -47,14 +47,10 @@ export function ListComments() {
       <Header>
         <ContainerStar>
           <p>Média de estrelas</p>
-          <Stars>
-            <Star size={22} weight="fill" />
-            <Star size={22} weight="fill" />
-            <Star size={22} weight="fill" />
-            <Star size={22} weight="fill" />
-            <Star size={22} weight="fill" />
+          <Star>
+            <Stars number={1} />
             <MediaStar>4,6</MediaStar>
-          </Stars>
+          </Star>
         </ContainerStar>
         <ContainerButtons>
           <button>

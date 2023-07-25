@@ -1,5 +1,5 @@
 import { Container, Comment, ContainerPhotos, Slider } from './styles'
-import { Star, XCircle } from 'phosphor-react'
+import { XCircle } from 'phosphor-react'
 
 export function Comments() {
   return (

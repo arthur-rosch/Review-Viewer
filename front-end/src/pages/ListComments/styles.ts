@@ -33,7 +33,7 @@ export const ContainerStar = styled.div`
   }
 `
 
-export const Stars = styled.div`
+export const Star = styled.div`
   width: 100%;
 
   display: flex;
@@ -78,7 +78,7 @@ export const ContainerButtons = styled.div`
     outline: none;
     border-radius: 8px;
 
-    color: #616361;
+    color: #616365;
     background: rgba(207, 208, 209, 0.0984768907563025);
   }
 `
