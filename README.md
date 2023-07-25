@@ -13,18 +13,14 @@ Certifique-se de ter o Node.js e o npm instalados em sua máquina.
 
 ## Passo 2: Iniciar o servidor da API
 
-1. Ainda na pasta "api", execute o seguinte comando para iniciar o servidor da API em modo de desenvolvimento:
-
-   npm run start:dev
+1. Ainda na pasta "api", execute o seguinte comando para iniciar o servidor da API em modo de desenvolvimento:`npm run start:dev`
 
 Agora, a API estará em execução e ouvindo em um determinado endereço, como "http://localhost:3001".
 
 ## Passo 3: Iniciar o servidor do front-end
 
 1. Navegue até a pasta "front-end"do seu projeto.
-2. Execute o seguinte comando para iniciar o servidor do front-end em modo de desenvolvimento:
-
-   npm run dev
+2. Execute o seguinte comando para iniciar o servidor do front-end em modo de desenvolvimento:`npm run start`
 
    Agora, o front-end estará em execução e acessível através de um endereço, como "http://localhost:8080".
 
