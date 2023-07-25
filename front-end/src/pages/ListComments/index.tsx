@@ -19,6 +19,7 @@ import {
 } from './styles'
 
 export function ListComments() {
+  const [stars, setStars] = useState(0)
   const [ratings, setRatings] = useState<Ratings[]>([])
   const { itemId, shopeId } = useContext(ReviewViewerContext)
 
@@ -37,6 +38,7 @@ export function ListComments() {
       newRatings.splice(index, 1)
 
       setRatings(newRatings)
+      setStars(calculateRatingsAverage(ratings))
     }
   }
 
